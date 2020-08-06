@@ -5,6 +5,10 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
 
+var cors = require('cors')
+app.use(cors())
+app.options('*', cors())
+
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
@@ -14,6 +18,8 @@ var alumno_routes = require('./routes/alumnoRoutes')
 
 app.use('/api',libro_routes)
 app.use('/api',alumno_routes)
+
+
 
 
 
