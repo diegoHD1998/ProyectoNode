@@ -1,6 +1,7 @@
 import React from 'react';
 import RegistroL from './Components/libroComponents/registrarLibro';
 import RegistroA from './Components/alumnoComponents/registroAlumno';
+import RegistroU from './Components/usuarioComponents/registrarUsuario'
 
 export default function App() {
   return (
@@ -8,7 +9,9 @@ export default function App() {
 
       {/* <RegistroA></RegistroA> */}
 
-      <RegistroL></RegistroL>
+      {/* <RegistroL></RegistroL> */}
+
+      <RegistroU></RegistroU>
 
     </div>
     

@@ -11,7 +11,7 @@ function Guardar(req, res){
     libro.Idioma=req.body.Idioma
 
     libro.save((err, LibroGuardado)=>{
-        if (err) return res.status(500).send({mensaje1:"Error fatal "})
+        if (err) return res.status(500).send({mensaje1:"El libro no pudo ser registrado"})
 
         res.status(200).send({libroInsertado: LibroGuardado})
     })
