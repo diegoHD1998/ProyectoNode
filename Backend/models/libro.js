@@ -5,7 +5,11 @@ const Schema = mongoose.Schema
 const LibroSchema = Schema(
     {
         TituloLibro:String,
-        IdLibro:String,// cambiar esto
+        IdLibro:{
+            type: String,
+            unique:true,
+            required:true
+        },
         Autor:String,
         Idioma:String
 

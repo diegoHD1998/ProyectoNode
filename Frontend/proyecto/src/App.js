@@ -1,11 +1,14 @@
 import React from 'react';
-import Registro from './Components/libroComponents/registrarLibro';
+import RegistroL from './Components/libroComponents/registrarLibro';
+import RegistroA from './Components/alumnoComponents/registroAlumno';
 
 export default function App() {
   return (
     <div>
 
-      <Registro></Registro>
+      {/* <RegistroA></RegistroA> */}
+
+      <RegistroL></RegistroL>
 
     </div>
     

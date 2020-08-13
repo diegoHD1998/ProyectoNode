@@ -5,7 +5,11 @@ const Schema = mongoose.Schema
 const AlumnoSchema = Schema(
     {
         Nombre:String,
-        Rut:String
+        Rut:{
+            type:String,
+            unique:true,
+            required:true
+        }
     }
 )
 

@@ -3,7 +3,7 @@
 var Libro = require('../models/libro')
 
 function Guardar(req, res){
-
+    
     let libro = new Libro()
     libro.TituloLibro = req.body.TituloLibro
     libro.IdLibro=req.body.IdLibro
@@ -11,9 +11,12 @@ function Guardar(req, res){
     libro.Idioma=req.body.Idioma
 
     libro.save((err, LibroGuardado)=>{
-        if (err) res.status(500).send(`Error base de datos ${err}`)
+        if (err) return res.status(500).send({mensaje1:"Error fatal "})
+
         res.status(200).send({libroInsertado: LibroGuardado})
     })
+
+    
 }
 
 function Todos(req, res){

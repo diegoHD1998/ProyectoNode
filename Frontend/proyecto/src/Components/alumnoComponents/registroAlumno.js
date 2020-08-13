@@ -14,26 +14,19 @@ export default function App() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
       axios
-      .post("http://localhost:5000/api/guardar",data)
+      .post("http://localhost:5000/api/guardar-A",data)
       .then(
         (response)=>{
             console.log(response.data)
 
             Swal.fire({
                 icon: 'success',
-                title: 'Libro Registrado',
-                text: 'El libro a sido registrado con exito'
+                title: 'Alumno Registrado',
+                text: 'El Alumno a sido registrado con exito'
               })
         }
       )
       .catch((error)=>{
-
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: error.response.data.mensaje1
-        })
-
         console.log(error);
       });
   };
@@ -47,7 +40,7 @@ export default function App() {
     <div>
         <Container component="main" maxWidth="xs">
             <Typography component="h1" variant="h5">
-                Registrar Libro
+                Registrar Alumno
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -56,9 +49,9 @@ export default function App() {
                 margin="normal"
                 required
                 fullWidth
-                id="TituloLibro"
-                label="TituloLibro"
-                name="TituloLibro"
+                id="Nombre"
+                label="Nombre"
+                name="Nombre"
                 type="text"
                 autoComplete="off"
                 autoFocus
@@ -70,39 +63,9 @@ export default function App() {
                 margin="normal"
                 required
                 fullWidth
-                id="IdLibro"
-                label="IdLibro"
-                name="IdLibro"
-                type="text"
-                autoComplete="off"
-                autoFocus
-                inputRef={register}
-                />
-
-
-                <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="Autor"
-                label="Autor"
-                name="Autor"
-                type="text"
-                autoComplete="off"
-                autoFocus
-                inputRef={register}
-                />
-
-
-                <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="Idioma"
-                label="Idioma"
-                name="Idioma"
+                id="Rut"
+                label="Rut"
+                name="Rut"
                 type="text"
                 autoComplete="off"
                 autoFocus
