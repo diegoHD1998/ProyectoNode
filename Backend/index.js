@@ -16,10 +16,12 @@ app.use(bodyParser.json())
 var libro_routes = require('./routes/libroRoutes')
 var alumno_routes = require('./routes/alumnoRoutes')
 var usuario_routes = require('./routes/usuarioRoute')
+var prestamo_routes = require('./routes/prestamoLibroRoutes')
 
 app.use('/api',libro_routes)
 app.use('/api',alumno_routes)
 app.use('/api',usuario_routes)
+app.use('/api',prestamo_routes)
 
 
 
