@@ -8,9 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
-
-export default function App() {
+const Newuser = ({
+  setModoregistro
+}) => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
       axios
@@ -51,6 +51,34 @@ export default function App() {
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
 
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="nombre"
+                label="Nombre"
+                name="nombre"
+                type="text"
+                autoComplete="off"
+                autoFocus
+                inputRef={register}
+                />
+
+<TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="apellido"
+                label="Apellido"
+                name="apellido"
+                type="text"
+                autoComplete="off"
+                autoFocus
+                inputRef={register}
+                />
+
                 <TextField
                 variant="outlined"
                 margin="normal"
@@ -90,6 +118,15 @@ export default function App() {
 
             </form>
 
+            <br></br>
+      <Button 
+          onClick={() => setModoregistro(false)}
+          variant="contained" 
+          color="secondary"
+          >
+            Cerrar
+          </Button>
+
         </Container>
     </div>
 
@@ -97,3 +134,5 @@ export default function App() {
     
   );
 }
+
+export default Newuser;

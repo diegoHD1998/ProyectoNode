@@ -1,7 +1,7 @@
 import React from 'react';
 import RegistroL from './Components/libroComponents/registrarLibro';
 import RegistroA from './Components/alumnoComponents/registroAlumno';
-import RegistroU from './Components/usuarioComponents/registrarUsuario'
+import Login from './Components/login'
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
 
       {/* <RegistroL></RegistroL> */}
 
-      <RegistroU></RegistroU>
+      <Login></Login>
 
     </div>
     

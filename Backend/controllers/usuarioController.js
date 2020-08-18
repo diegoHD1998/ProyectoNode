@@ -6,6 +6,8 @@ const jwt = require ('jsonwebtoken')
 
 function Guardar(req, res){
     let usuario = new Usuario()
+    usuario.nombre = req.body.nombre
+    usuario.apellido = req.body.apellido
     usuario.correo = req.body.correo
     usuario.clave = req.body.clave
 
@@ -21,12 +23,12 @@ function Validar(req, res) {
     let password = req.body.clave;
   
   
-    Usuario.findOne({correoUser:email}, (err, user) => {
+    Usuario.findOne({correo:email}, (err, user) => {
         if (err) return res.status(500).send({ mensaje: 'error al realizar la peticion' })
         if (!user) return res.status(401).send({ mensaje: 'Error usuario no existe' })
   
   
-        bcrypt.compare(password, user.passUser, function(error, isMatch) {
+        bcrypt.compare(password, user.clave, function(error, isMatch) {
             if (error) {
                 res.status(500).send(`Error al validar usuario> ${error}`)
             } else if (!isMatch) {
