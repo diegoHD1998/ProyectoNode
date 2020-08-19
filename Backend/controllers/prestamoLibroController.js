@@ -9,7 +9,7 @@ function guardarPrestamo(req,res){
     prestamo.FechaDevolucion = req.body.FechaDevolucion
 
     prestamo.save((err,prestamolibro) => {
-        res.status(200).send({registroInsertado: prestamolibro})
+        res.status(200).send({PrestamoLibro: prestamolibro})
     })
 }
 

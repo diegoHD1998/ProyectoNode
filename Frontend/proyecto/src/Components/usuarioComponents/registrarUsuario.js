@@ -8,6 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
+
+
 const Newuser = ({
   setModoregistro
 }) => {
@@ -23,7 +25,7 @@ const Newuser = ({
                 icon: 'success',
                 title: 'Usuario Registrado',
                 text: 'El usuario a sido registrado con exito'
-              })
+              })   
         }
       )
       .catch((error)=>{

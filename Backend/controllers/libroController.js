@@ -24,12 +24,12 @@ function Todos(req, res){
         if (err) return res.status(500).send({mensaje:'error al realizar la peticion'})
         if(!libro) return res.status(404).send({mensaje:'Error el libro no existe'})
 
-        res.status(200).send({libro})
+        res.status(200).send({libro: libro})
     })
 }
 
 function Eliminar(req, res){
-    let idLibro1 = req.params.id
+    let idLibro1 = req.params.IdLibro
     Libro.findById(idLibro1,(err, libro)=>{
         if (err) return res.status(500).send({mensaje:'error al borrar el libro'})
         libro.remove(err=>{
@@ -41,11 +41,29 @@ function Eliminar(req, res){
 
 function Actualizar(req, res){
     let idLibro2 = req.params.id
-    let update = req.body
+    let update = {
+        TituloLibro: req.body.titulo,
+        IdLibro: req.body.titulo,
+        Autor: req.body.titulo,
+        Idioma: req.body.titulo
+    }
 
     Libro.findByIdAndUpdate(idLibro2,update, (err, libroActualizado)=>{
         if (err) return res.status(500).send({mensaje:'error al actualizar el libro'})
-        res.status(200).send({libroActualizado})
+        res.status(200).send({
+            mensaje:'Los datos del Libro han sido actualizados exitosamente',
+            libro:libroActualizado})
+
+    })
+}
+
+function buscarAND(req,res){
+    let Id = req.body.codigo
+    let Titulo = req.body.titulo
+
+    Libro.find({IdLibro:Id, TituloLibro: Titulo},(err, libro)=>{
+        if(!libro) return res.status(404).send({mensaje:'Error el libro no exixte'})
+        res.status(200).send({libro})
 
     })
 }
@@ -55,6 +73,7 @@ module.exports = {
     Guardar,
     Todos,
     Eliminar,
-    Actualizar
+    Actualizar,
+    buscarAND
 }
 

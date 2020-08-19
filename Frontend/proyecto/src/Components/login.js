@@ -71,13 +71,23 @@ export default function SignIn() {
       (response)=>{
         console.log(response.data);
 
-        Swal.fire({
+        if(response.status ===200){
+          localStorage.setItem('TOKEN_APP_TALLER',response.data.token)
+          window.location = '/home'
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Usuario No Validado',
+            text: 'El correo o contraseña ingresada no corresponde'
+          })
+        }
+       /*  Swal.fire({
           icon: 'success',
           title: 'Usuario Validado',
           text: 'El usuario fue validado con exito'
-        })
+        }) */
 
-        localStorage.setItem('TOKEN_APP_TALLER',response.data.token)
+        
 
         
       }

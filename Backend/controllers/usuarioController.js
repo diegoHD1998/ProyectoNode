@@ -1,6 +1,7 @@
 'use strict'
 
 var Usuario = require('../models/usuario')
+var nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt-nodejs')
 const jwt = require ('jsonwebtoken')
 
@@ -11,10 +12,38 @@ function Guardar(req, res){
     usuario.correo = req.body.correo
     usuario.clave = req.body.clave
 
+
+    
     usuario.save((err, UsuarioRegistrado)=>{
         if (err) return res.status(500).send({mensajeUser:"El usuario no pudo ser registrado"})
         res.status(200).send({usuarioRegistrado:UsuarioRegistrado})
     })
+
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "biblioteca202001@gmail.com",
+        pass: "biblioteca12345",
+      },
+    });
+
+    var mensaje =
+      "Usted a sido registrado como nuevo usuario de Biblioteca UBB";
+
+    var mailOptions = {
+      from: "biblioteca202001@gmail.com",
+      to: usuario.correo,
+      subject: "Credenciales Biblioteca UBB",
+      text: mensaje,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email enviado: " + info.response);
+      }
+    });
 }
 
 function Validar(req, res) {

@@ -14,6 +14,7 @@ var api= express.Router()
 
 api.post('/guardar', libroController.Guardar)
 api.get('/mostrar', libroController.Todos)
+api.post('/buscarAnd',libroController.buscarAND)
 api.delete('/borrar/:id', libroController.Eliminar)
 api.put('/actualizar/:id', libroController.Actualizar)
 
